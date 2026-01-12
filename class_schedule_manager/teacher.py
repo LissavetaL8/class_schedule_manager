@@ -12,3 +12,7 @@ class Teacher:
         """Связывает преподавателя с конкретным событием."""
         event.teacher = self
         print(f"Преподаватель {self.name} назначен на предмет {event.subject}")
+
+if __name__ == '__main__':
+    ...
+    
