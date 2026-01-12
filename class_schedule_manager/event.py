@@ -18,4 +18,9 @@ class Event:
 
     def __repr__(self):
         t_name = self.teacher.name if self.teacher else "Не назначен"
+
         return f"[{self.dt.strftime('%d.%m %H:%M')}] {self.subject} ({self.location}) | Преподаватель: {t_name}"
+
+if __name__ == '__main__':
+    ...
+    
