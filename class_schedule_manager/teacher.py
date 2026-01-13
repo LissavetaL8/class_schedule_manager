@@ -12,10 +12,11 @@ class Teacher:
     def assign_to_event(self, event):
         """Связывает преподавателя с конкретным событием."""
         event.teacher = self
-        print(f"Преподаватель {self.name} назначен на предмет {event.subject}")
+        print(f"Преподаватель {self.__name} назначен на предмет {event.subject}")
 
 if __name__ == '__main__':
     ...
     
+
 
 
