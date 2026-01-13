@@ -13,6 +13,13 @@ class Teacher:
         self.__name = name
         self.__department = department
 
+   @property
+    def name(self):
+        """ Геттер для обращения к приватной переменной __name.
+        Позволяет читать имя, не изменяя его.
+        :return: значение приватного атрибута __name """
+        return self.__name
+        
     def assign_to_event(self, event):
         """Связывает преподавателя с конкретным событием.
         :event: событие/пара к которому привязан преподаватель
@@ -24,4 +31,5 @@ class Teacher:
 if __name__ == '__main__':
     ...
     
+
 
