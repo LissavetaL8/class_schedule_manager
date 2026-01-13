@@ -10,6 +10,7 @@ class Event:
         :param time_str: Время в формате ЧЧ:ММ
         :param subject: Название предмета
         :param location: Место проведения
+        retern: None
         """
         self.dt = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
         self.subject = subject
@@ -25,4 +26,5 @@ class Event:
 if __name__ == '__main__':
     ...
     
+
 
