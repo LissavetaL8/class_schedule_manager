@@ -8,7 +8,7 @@ class Teacher:
         """ вносит данные о преподавателе 
         :name: ФИО преподавателя
         :department: название кафедры или факультета, на котором работает преподаватель
-        :reteurn: none"""
+        :return: None"""
         
         self.__name = name
         self.__department = department
@@ -24,3 +24,4 @@ class Teacher:
 if __name__ == '__main__':
     ...
     
+
