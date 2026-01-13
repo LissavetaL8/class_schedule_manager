@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='NAME', # Название вашей программы
+    name='class_schedul_manager', # Название вашей программы
     version='0.0.1', # Версия вашей программы.
     packages=find_packages("."),
     scripts=["bin/uni_schedule.py"], # Расположение главного исполняемого файла.
@@ -15,4 +15,5 @@ setup(
       # Список зависимостей если есть.
       ],
 )
+
 
