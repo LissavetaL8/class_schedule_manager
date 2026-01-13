@@ -18,8 +18,10 @@ class Event:
         self.teacher = None
 
     def __repr__(self):
-        """ принимает ссылку на данные о событие
-        retern: текст, который включает дату, время, название предмета, место и имя преподавателя """
+        """
+        self:принимает ссылку на данные о событие
+        retern: текст, который включает дату, время, название предмета, место и имя преподавателя 
+        """
         t_name = self.teacher.name if self.teacher else "Не назначен"
 
         return f"[{self.dt.strftime('%d.%m %H:%M')}] {self.subject} ({self.location}) | Преподаватель: {t_name}"
@@ -27,6 +29,7 @@ class Event:
 if __name__ == '__main__':
     ...
     
+
 
 
 
