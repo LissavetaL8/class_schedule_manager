@@ -5,8 +5,8 @@ class Teacher:
     """Класс преподавателя."""
 
     def __init__(self, name, department):
-        self.name = name
-        self.department = department
+        self.__name = name
+        self.__department = department
 
     def assign_to_event(self, event):
         """Связывает преподавателя с конкретным событием."""
@@ -16,3 +16,4 @@ class Teacher:
 if __name__ == '__main__':
     ...
     
+
