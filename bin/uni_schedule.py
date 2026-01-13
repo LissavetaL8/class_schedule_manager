@@ -1,6 +1,6 @@
-from unischedule.event import Event
-from unischedule.schedule import Schedule
-from unischedule.teacher import Teacher
+from uni_schedule.event import Event
+from uni_schedule.schedule import Schedule
+from uni_schedule.teacher import Teacher
 
 
 def main():
@@ -31,4 +31,5 @@ def main():
 if __name__ == "__main__":
     main()
     
+
 
