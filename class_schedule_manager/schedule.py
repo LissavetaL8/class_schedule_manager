@@ -32,7 +32,7 @@ class Schedule:
     def check_conflict(self, dt):
         """Проверяет, занято ли указанное время
         принимает расписание и время события
-        :return: true, если время занято другой дисциплиной или False, если указанный интервал времени свободен"""
+        :return: True, если время занято другой дисциплиной или False, если указанный интервал времени свободен"""
         
         for e in self._events:
             if abs(e.dt - dt) < timedelta(hours=1, minutes=30):
@@ -56,6 +56,7 @@ class Schedule:
 if __name__ == '__main__':
     ...
     
+
 
 
 
