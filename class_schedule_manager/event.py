@@ -10,7 +10,7 @@ class Event:
         :param time_str: Время в формате ЧЧ:ММ
         :param subject: Название предмета
         :param location: Место проведения
-        retern: None
+        :return: None
         """
         self.dt = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
         self.subject = subject
@@ -19,8 +19,8 @@ class Event:
 
     def __repr__(self):
         """
-        self:принимает ссылку на данные о событие
-        retern: текст, который включает дату, время, название предмета, место и имя преподавателя 
+        :self:принимает ссылку на данные о событие
+        :return: текст, который включает дату, время, название предмета, место и имя преподавателя 
         """
         t_name = self.teacher.name if self.teacher else "Не назначен"
 
@@ -29,6 +29,7 @@ class Event:
 if __name__ == '__main__':
     ...
     
+
 
 
 
