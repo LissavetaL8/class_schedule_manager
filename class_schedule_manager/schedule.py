@@ -1,61 +1,83 @@
 """Модуль управления расписанием."""
-from datetime import timedelta
-
+from datetime import timedelta, datetime
 
 class Schedule:
-    """Класс для хранения и обработки списка занятий."""
-
-    def __init__(self):
-        """ принимает созданное расписание занятий
-        :return: None """
-        self._events = [] #список в котором будет храниться расписание занятий
-
-    def add_event(self, event):
+  """Класс для хранения и обработки списка занятий."""
+  def __init__(self):
+    """
+        Инициализирует расписание занятий.
+        """
+    self.__events = []  # список в котором будет храниться расписание занятий
+      
+  def add_event(self, event) -> bool:
+    """
+        Добавляет новое событие в расписание.
+        :param event: Объект события, которое нужно добавить.
+        :return: True, если событие успешно добавлено, False в противном случае.
+        """
+    if not isinstance(event, Event):
+      raise TypeError("Аргумент 'event' должен быть экземпляром класса Event.")
+    if self.check_conflict(event.get_dt()):
+      print(f"Ошибка: Конфликт расписания на {event.get_dt()}")
+      return False
         
-        """:event: объект, который нужно добавить в список
-        :event.dt: Используется для проверки занятости времени
-        :events: Список, в который добавляется новое событие"""
+    self.__events.append(event)
+    self.__events.sort(key=lambda x: x.get_dt())
+    return True
+      
+  def remove_event(self, subject: str, dt: datetime):
+    """
+        Удаляет занятие по названию и времени.
+        :param subject: Название предмета, который нужно удалить.
+        :param dt: Время события, которое нужно удалить.
+        """
+    self.__events = [
+        e for e in self.__events if not (e.get_subject() == subject and e.get_dt() == dt)
+    ]
+      
+  def check_conflict(self, dt: datetime) -> bool:
+    """
+        Проверяет, занято ли указанное время.
+        :param dt: Время события для проверки.
+        :return: True, если время занято другой дисциплиной, False, если указанный интервал времени свободен.
+        """
+    for e in self.__events:
+      if abs(e.get_dt() - dt) < timedelta(hours=1, minutes=30):
+        return True  # если время занято другой дисциплиной, в указанном интервале
+    return False  # если время свободно
+      
+  def get_for_day(self, date_obj: datetime) -> list:
+    """
+        Возвращает события на конкретный день.
+        :param date_obj: Дата, на которую нужно получить список пар.
+        :return: Список объектов событий на заданный день.
+        """
+    return [e for e in self.__events if e.get_dt().date() == date_obj.date()]
+      
+  def show_all(self):
+    """
+        Печатает все расписание.
+        """
+    for e in self.__events:
+      print(e)
+  def get_events(self) -> list:
+    """Возвращает список всех событий в расписании."""
+    return self.__events
+      
+  def set_events(self, events: list):
+    """
+        Устанавливает новый список событий для расписания.
+        :param events: Новый список событий.
+        """
+    if not all(isinstance(event, Event) for event in events):
+      raise TypeError("Все элементы списка 'events' должны быть экземплярами класса Event.")
         
-        if self.check_conflict(event.dt):
-            print(f"Ошибка: Конфликт расписания на {event.dt}")
-            return False
-        self._events.append(event)
-        self._events.sort(key=lambda x: x.dt)
-        return True
-
-    def remove_event(self, subject, dt):
-        """Удаляет занятие по названию и времени
-        принимает созданное расписание занятий, название предмета, который нужно удалить
-        :return: None"""
-        self._events = [e for e in self._events if not (e.subject == subject and e.dt == dt)]
-
-    def check_conflict(self, dt):
-        """Проверяет, занято ли указанное время
-        принимает расписание и время события
-        :return: True, если время занято другой дисциплиной или False, если указанный интервал времени свободен"""
-        
-        for e in self._events:
-            if abs(e.dt - dt) < timedelta(hours=1, minutes=30):
-                return True #если время занято другой дисциплной, в указанном интервале
-        return False #если время свободно
-
-    def get_for_day(self, date_obj):
-        """Возвращает события на конкретный день
-        принимает рассписание и дату на которую нужно получить список пар
-        :return: расписание пар на заданный день"""
-        
-        return [e for e in self._events if e.dt.date() == date_obj.date()]
-
-    def show_all(self):
-        """Печать всего расписания
-        принимает созданное расписание 
-        :return: полное расписание на весь период"""
-        for e in self._events:
-            print(e)
-
+    self.__events = events
+      
 if __name__ == '__main__':
     ...
     
+
 
 
 
